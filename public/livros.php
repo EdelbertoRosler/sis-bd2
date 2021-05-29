@@ -20,17 +20,21 @@
         require 'mysql_server.php';
 
         $conexao = RetornaConexao();
-
-        $titulo = 'titulo';
+        
+        $codigo_livro = 'codigo_livro';
         $autor = 'autor';
-        $classificacao = 'classificacao';
+        $titulo = 'titulo';
+        $editora = 'editora';
+        $ano_publicacao = 'ano_publicacao';
         /*TODO-1: Adicione uma variavel para cada coluna */
 
 
         $sql =
-            'SELECT ' . $titulo .
+            'SELECT ' . $codigo_livro .
             '     , ' . $autor .
-            '     , ' . $classificacao .
+            '     , ' . $titulo .
+            '     , ' . $editora .
+            '     , ' . $ano_publicacao .
             /*TODO-2: Adicione cada variavel a consulta abaixo */
             '  FROM livros';
 
@@ -45,10 +49,12 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $titulo . '</th>' .
+            '        <th>' . $codigo_livro . '</th>' .
             '        <th>' . $autor . '</th>' .
+            '        <th>' . $titulo . '</th>' .
+            '        <th>' . $editora . '</th>' .           
+            '        <th>' . $ano_publicacao . '</th>' .
             /* TODO-3: Adicione as variaveis ao cabeçalho da tabela */
-            '        <th>' . $classificacao . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -58,10 +64,12 @@
             while ($registro = mysqli_fetch_assoc($resultado)) {
                 echo '<tr>';
 
-                echo '<td>' . $registro[$titulo] . '</td>' .
+                echo '<td>' . $registro[$codigo_livro] . '</td>' .
                     '<td>' . $registro[$autor] . '</td>' .
+                    '<td>' . $registro[$titulo] . '</td>' .
+                    '<td>' . $registro[$editora] . '</td>'.
+                    '<td>' . $registro[$ano_publicacao] . '</td>';
                     /* TODO-4: Adicione a tabela os novos registros. */
-                    '<td>' . $registro[$classificacao] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
